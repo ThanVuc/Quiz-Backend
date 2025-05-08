@@ -15,6 +15,6 @@ namespace Quiz.Models
         public bool IsCorrect { get; set; } = false;
         [ForeignKey("Quiz")]
         public int QuizId { get; set; }
-        public Quiz Quiz { get; set; } = new Quiz();
+        public Quiz? Quiz { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace Quiz.Models
     {
         public int QuizId { get; set; }
         public string Content { get; set; } = string.Empty;
-        public List<Answer> Answers { get; set; } = new List<Answer>();
+        public List<Answer>? Answers { get; set; }
         public string FeedBack { get; set; } = string.Empty;
     }
 }

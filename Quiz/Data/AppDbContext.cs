@@ -30,7 +30,7 @@ namespace Quiz.Data
                 .OnDelete(DeleteBehavior.NoAction);
         }
 
-        public DbSet<UserHistory> IncorrectHistories { get; set; } = null!;
+        public DbSet<UserHistory> UserHistories { get; set; } = null!;
         public DbSet<UserInSession> Users { get; set; } = null!;    
         public DbSet<Quiz.Models.Quiz> Quizzes { get; set; } = null!;
         public DbSet<Answer> Answers { get; set; } = null!;

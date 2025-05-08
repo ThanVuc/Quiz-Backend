@@ -17,10 +17,10 @@ namespace Quiz.Models
         public int UserAnswerId { get; set; }
         [ForeignKey("CorrectAnswer")]
         public int CorrectAnswerId { get; set; }
-        public UserInSession User { get; set; } = new UserInSession();
-        public Quiz Quiz { get; set; } = new Quiz();
-        public Answer UserAnswer { get; set; } = new Answer();
-        public Answer CorrectAnswer { get; set; } = new Answer();
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public UserInSession? User { get; set; }
+        public Quiz? Quiz { get; set; }
+        public Answer? UserAnswer { get; set; }
+        public Answer? CorrectAnswer { get; set; }
+        public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }
