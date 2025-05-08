@@ -28,10 +28,24 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        dbContext.Database.Migrate(); // Apply any pending migrations
+        var seedDataService = scope.ServiceProvider.GetRequiredService<SeedDataService>();
+        await seedDataService.SeedQuizData(); // Seed the database with initial data
+    }
+    catch (Exception ex)
+    {
+        // Handle exceptions during seeding
+        Console.WriteLine($"An error occurred while seeding the database: {ex.Message}");
+    }
 }
 
 app.UseCors("AllowAllOrigins");

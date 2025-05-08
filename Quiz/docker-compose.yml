@@ -1,0 +1,37 @@
+services:
+  api:
+    image: sinhnguyen417/quiz:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: quiz_api
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Quizs;User Id=sa;Password=@Sinh1234;TrustServerCertificate=True
+    depends_on:
+      - sqlserver
+    networks:
+      - app-network
+    restart: always
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=@Sinh1234
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlvolume:/var/opt/mssql
+    restart: always
+    networks:
+      - app-network
+
+volumes:
+  sqlvolume:
+
+networks:
+    app-network:
+      driver: bridge
