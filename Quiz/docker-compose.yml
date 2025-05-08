@@ -1,9 +1,6 @@
 services:
   api:
     image: sinhnguyen417/quiz:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
     container_name: quiz_api
     ports:
       - "8080:8080"
