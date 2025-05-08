@@ -1,0 +1,30 @@
+# Ignore appsettings file
+appsettings.json
+
+# Ignore Visual Studio Code settings
+.vscode/
+
+# Ignore build outputs
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.suo
+
+# Ignore publish output
+publish/
+
+# Ignore temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Ignore package manager directories
+node_modules/
+wwwroot/lib/
+
+# Ignore lock files
+project.lock.json
+*.lock
